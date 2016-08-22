@@ -6,6 +6,8 @@ running the script `rosrun rosserial_mbed make_libraries.py`.
 
 It exists just to be uploaded to the PlatformIO Library Registry.
 
+ROS package: ros-kinetic-rosserial-mbed (0.7.3-0xenial-20160805-132027-0700)
+
 ## Changes for PlatformIO ##
 =====================================
 
