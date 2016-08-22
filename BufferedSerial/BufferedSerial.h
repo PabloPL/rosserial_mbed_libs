@@ -25,7 +25,7 @@
 #define BUFFEREDSERIAL_H
  
 #include "mbed.h"
-#include "Buffer.h"
+#include "Buffer/Buffer.h"
 
 /** A serial port (UART) for communication with other serial devices
  *

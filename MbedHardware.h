@@ -10,7 +10,7 @@
 
 #include "mbed.h"
 
-#include "BufferedSerial.h"
+#include "BufferedSerial/BufferedSerial.h"
 
 class MbedHardware {
   public:
