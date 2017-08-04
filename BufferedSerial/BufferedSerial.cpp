@@ -26,7 +26,7 @@
 BufferedSerial::BufferedSerial(PinName tx, PinName rx, uint32_t buf_size, uint32_t tx_multiple, const char* name)
     : RawSerial(tx, rx) , _rxbuf(buf_size), _txbuf((uint32_t)(tx_multiple*buf_size))
 {
-    RawSerial::attach(this, &BufferedSerial::rxIrq, Serial::RxIrq);
+    RawSerial::attach(callback(this, &BufferedSerial::rxIrq), Serial::RxIrq);
     this->_buf_size = buf_size;
     this->_tx_multiple = tx_multiple;   
     return;
@@ -149,7 +149,7 @@ void BufferedSerial::prime(void)
     if(serial_writable(&_serial)) {
         RawSerial::attach(NULL, RawSerial::TxIrq);    // make sure not to cause contention in the irq
         BufferedSerial::txIrq();                // only write to hardware in one place
-        RawSerial::attach(this, &BufferedSerial::txIrq, RawSerial::TxIrq);
+        RawSerial::attach(callback(this, &BufferedSerial::txIrq), RawSerial::TxIrq);
     }
 
     return;
